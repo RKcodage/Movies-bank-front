@@ -1,0 +1,13 @@
+.login {
+  h1, form, p, a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  h1 {
+    margin-top: 40px;
+  }
+  form {
+    flex-direction: column;
+  }
+}
