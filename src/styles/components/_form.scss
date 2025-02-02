@@ -1,6 +1,7 @@
 .form-component {
   .form-container {
     text-align: center;
+    margin: 40px 0;
   }
   form {
     width: 300px;
@@ -16,6 +17,7 @@
       width: 220px;
       outline: none;
       text-align: center;
+      caret-color: transparent;
     }
     input[type="submit"] {
       padding: 1px 10px;
@@ -34,7 +36,9 @@
       }
     }
   }
+  
   .btn-sort-container {
+    position: relative;
     margin: 8px auto;
     width: 220px;
     display: flex;
@@ -49,7 +53,7 @@
     }
     #goodToBad,
     #badToGood {
-      background: $color-1;
+      background: rgb(8, 50, 84);
       width: 110px;
       transition: 0.3s;
       position: relative;
@@ -72,4 +76,33 @@
       top: 50%;
     }
   }
+}
+
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0 20px 0;
+}
+
+.pagination-container button {
+  margin: 0 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.pagination-container button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+@media (max-width: 900px) {
+  .form-component {
+    .form-container {
+      margin: 120px 0 20px 0;
+    }
+  }
+  
 }

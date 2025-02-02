@@ -57,24 +57,27 @@ function Signup(props) {
   };
 
   return (
-    <div className="login">
-      <h1>S'inscrire</h1>
-      <form action="POST" onSubmit={handleSubmit}>
-        <input
-          type="text"
-          onChange={handleName}
-          placeholder="Nom d'utilisateur"
-        />
-        <input type="email" onChange={handleEmail} placeholder="Email" />
-        <input
-          type="password"
-          onChange={handlePassword}
-          placeholder="Password"
-        />
-        <input type="submit" value="S'inscrire" />
-      </form>
-      <div>
-        <Link to="/login">Déjà inscrit ? Connecte-toi !</Link>
+    <div className="login-page">
+      <div className="signup-form-container">
+        <h1>S'inscrire</h1>
+        <form action="POST" onSubmit={handleSubmit}>
+          <input
+            type="text"
+            onChange={handleName}
+            placeholder="Nom d'utilisateur"
+          />
+          <input type="email" onChange={handleEmail} placeholder="Email" />
+          <input
+            type="password"
+            onChange={handlePassword}
+            placeholder="Password"
+          />
+          <input type="submit" value="S'inscrire" />
+        </form>
+      </div>
+
+      <div className="authentification-redirect">
+        <Link to="/">Déjà inscrit ? Connecte-toi !</Link>
       </div>
     </div>
   );

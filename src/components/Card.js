@@ -1,17 +1,94 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 
-const Card = ({ movie, setUser, userToken }) => {
+const Card = ({ movie, setUser, userToken, userId, deleteStorage }) => {
   const [isAdded, setIsAdded] = useState(false);
 
-  useEffect(() => {
-    let storedData = window.localStorage.movies
-      ? window.localStorage.movies.split(",")
-      : [];
-    if (storedData.includes(movie.id.toString())) {
-      setIsAdded(true);
-    }
-  }, [movie.id]);
+  // useEffect(() => {
+  //   let storedData = window.localStorage.movies
+  //     ? window.localStorage.movies.split(",")
+  //     : [];
+  //   if (storedData.includes(movie.id.toString())) {
+  //     setIsAdded(true);
+  //   }
+  // }, [movie.id]);
 
+  // useEffect(() => {
+  //   const fetchFavorites = async () => {
+  //     try {
+  //       if (userToken) {
+  //         const response = await axios.get(
+  //           `http://localhost:8000/api/users/${userId}/favorites`
+  //         );
+  //         const existingFavorites = response.data;
+  //         setIsAdded(
+  //           Array.isArray(existingFavorites) &&
+  //             existingFavorites.some(
+  //               (fav) => fav.movieId === movie.id.toString()
+  //             )
+  //         );
+  //       }
+  //     } catch (error) {
+  //       console.error("Error fetching favorites:", error);
+  //     }
+  //   };
+
+  //   fetchFavorites();
+  // }, [userToken, userId, movie.id]);
+
+  // const addStorage = async () => {
+  //   try {
+  //     if (userToken && userId) {
+  //       await axios.post(
+  //         `http://localhost:8000/api/users/${userId}/favorites`,
+  //         {
+  //           movieId: movie.id.toString(),
+  //         }
+  //       );
+  //       setIsAdded(true);
+  //     } else {
+  //       console.error("userId is undefined");
+  //     }
+  //   } catch (error) {
+  //     console.error("Error adding favorite:", error);
+  //   }
+  // };
+
+  const addStorage = async () => {
+    // try {
+    //   if (!userToken || !userId) {
+    //     console.error("User token or userId is missing");
+    //     return;
+    //   }
+
+    // const userId = "6765a1d74889338893a11385";
+
+    console.log("Attempting to add movie to favorites:", movie.id);
+
+    const response = await axios.post(
+      `http://localhost:8000/api/users/${userId}/favorites`,
+      {
+        movieId: movie.id.toString(),
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${userToken}`, // Si nécessaire
+        },
+      }
+    );
+
+    console.log("Response from backend:", response.data);
+    setIsAdded(true);
+    // } catch (error) {
+    //   console.error(
+    //     "Error adding favorite:",
+    //     error.response?.data || error.message
+    //   );
+    // }
+  };
+
+  // To format the date
   const dateFormater = (date) => {
     let [yy, mm, dd] = date.split("-");
     return [dd, mm, yy].join("/");
@@ -85,43 +162,28 @@ const Card = ({ movie, setUser, userToken }) => {
     return genreArray.map((genre) => <li key={genre}>{genre}</li>);
   };
 
-  const addStorage = () => {
-    if (userToken) {
-      let storedData = window.localStorage.movies
-        ? window.localStorage.movies.split(",")
-        : [];
-      if (!storedData.includes(movie.id.toString())) {
-        storedData.push(movie.id.toString());
-        window.localStorage.movies = storedData.join(",");
-        setIsAdded(true);
-      }
-    } else {
-      alert("Tu n'es pas connecté mon pote !");
-    }
-  };
+  // const deleteStorage = (id) => {
+  //   let currentButton = document.getElementById(id);
+  //   let cardContainer = document.querySelector(".result");
 
-  const deleteStorage = (id) => {
-    let currentButton = document.getElementById(id);
-    let cardContainer = document.querySelector(".result");
+  //   if (currentButton && cardContainer) {
+  //     let retrieveParentData = currentButton.closest(".card");
+  //     if (retrieveParentData) {
+  //       cardContainer.removeChild(retrieveParentData);
+  //     }
+  //   }
 
-    if (currentButton && cardContainer) {
-      let retrieveParentData = currentButton.closest(".card");
-      if (retrieveParentData) {
-        cardContainer.removeChild(retrieveParentData);
-      }
-    }
+  //   let storedData = window.localStorage.movies.split(",");
+  //   let newData = storedData.filter((movieId) => movieId !== id.toString());
 
-    let storedData = window.localStorage.movies.split(",");
-    let newData = storedData.filter((movieId) => movieId !== id.toString());
+  //   window.localStorage.movies = newData.join(",");
 
-    window.localStorage.movies = newData.join(",");
+  //   setIsAdded(false);
+  //   // window.location.reload();
+  //   // if (newData.length === 0) {
 
-    setIsAdded(false);
-    // window.location.reload();
-    // if (newData.length === 0) {
-
-    // }
-  };
+  //   // }
+  // };
 
   return (
     <div className="card">

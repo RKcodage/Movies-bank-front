@@ -1,13 +1,115 @@
-.login {
+.login-page {
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   h1, form, p, a {
     display: flex;
     justify-content: center;
     align-items: center;
+    text-decoration: none;
+    color: white;
   }
   h1 {
-    margin-top: 40px;
+    margin-bottom: 40px;
+    font-size: 40px;
+  }
+  .form-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 480px;
+    height: 500px;
+    border-radius: 15px;
+    margin-bottom: 40px;
+    background: #ffffff0f;
+    box-shadow: rgba(100, 100, 111, 0.307) 0px 7px 29px 0px;
+  }
+  .reset-form-container {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    flex-direction: column;
+    width: 480px;
+    height: 320px;
+    border-radius: 15px;
+    margin-bottom: 40px;
+    background: #ffffff0f;
+    box-shadow: rgba(100, 100, 111, 0.307) 0px 7px 29px 0px;
   }
   form {
     flex-direction: column;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    
   }
+
+  .authentification-redirect a 
+  {
+    color: rgb(241 241 241);
+    text-shadow: 1px 2px 0px rgba(84, 111, 227, 0.6);
+    font-size: 18px;
+    transition: transform 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.15);
+    }
+  }
+
+  .redirect-forgot-password {
+    margin-top: 20px;
+
+    &:hover {
+      text-decoration: underline;
+      text-decoration-thickness: 0.5px;
+      text-underline-offset: 3px;
+    }
+  }
+
+  input[type="text"],
+  input[type="password"],
+  input[type="email"] {
+    margin-bottom: 15px;
+    padding: 5px;
+    border-bottom: 1px solid #ccc;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    background: transparent;
+    width: 200px;
+    font-size: 16px;
+    caret-color: white;
+    color: white;
+  }
+
+  input[type="submit"] 
+  {
+    cursor: pointer;
+    margin-top: 20px;
+    width: 120px;
+    padding: 5px;
+    border-radius: 15px;
+    font-size: 20px;
+    background: rgb(0 10 22 / 50%);
+    color: white;
+  }
+
+  
 }
+
+@media (max-width: 768px) 
+{
+  .login-page {
+    height: 100vh;
+
+    .form-container 
+    {
+      width: 300px;
+      height: 320px;
+    }
+  }
+  
+}
+

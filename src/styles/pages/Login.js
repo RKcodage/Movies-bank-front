@@ -66,27 +66,32 @@ function Login(props) {
   };
 
   return (
-    <div className="login">
-      <h1>Se connecter</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="email"
-          onChange={handleEmail}
-          placeholder="Email"
-          name=""
-          id=""
-        />
-        <input
-          type="password"
-          onChange={handlePassword}
-          placeholder="Password"
-          name=""
-          id=""
-        />
-        <input type="submit" value="Se connecter" />
-      </form>
+    <div className="login-page">
+      <div className="form-container">
+        <h1>Se connecter</h1>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="email"
+            onChange={handleEmail}
+            placeholder="Email"
+            name=""
+            id=""
+          />
+          <input
+            type="password"
+            onChange={handlePassword}
+            placeholder="Password"
+            name=""
+            id=""
+          />
+          <input type="submit" value="Se connecter" />
+          <div className="redirect-forgot-password">
+            <Link to="/forget-password">Mot de passe oublié ?</Link>
+          </div>
+        </form>
+      </div>
 
-      <div>
+      <div className="authentification-redirect">
         <Link to="/signup">Tu n'est pas inscrit ? Créer toi un compte !</Link>
       </div>
     </div>
