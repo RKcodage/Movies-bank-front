@@ -26,7 +26,7 @@ import Footer from "./components/Footer";
 
 const App = () => {
   const [userToken, setUserToken] = useState(Cookies.get("userToken") || null);
-  const [userId] = useState(Cookies.get("userId") || null);
+  const [userId, setUserId] = useState(Cookies.get("userId") || null);
 
   // Protect access to unauthorized users
   const PrivateRoute = ({ children }) => {
@@ -38,10 +38,12 @@ const App = () => {
       Cookies.set("userToken", token, { expires: 7 });
       Cookies.set("userId", id, { expires: 7 });
       setUserToken(token);
+      setUserId(id);
     } else {
       Cookies.remove("userToken");
       Cookies.remove("userId");
       setUserToken(null);
+      setUserId(null);
     }
   };
 
