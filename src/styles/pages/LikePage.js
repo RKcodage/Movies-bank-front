@@ -39,7 +39,9 @@ const LikePage = ({ setUser, userToken, userId }) => {
   useEffect(() => {
     // Récupérer les favoris de l'utilisateur
     axios
-      .get(`http://localhost:8000/api/users/${userId}/favorites`)
+      .get(
+        `https://site--movies-bank--574qbjcqcwyr.code.run/api/users/${userId}/favorites`
+      )
       .then((response) => {
         const moviesId = response.data;
         const movieRequests = moviesId.map((movieId) =>

@@ -21,6 +21,8 @@ import Cookies from "js-cookie";
 import Header from "./components/Header";
 import Account from "./components/Account";
 import ForgotPassword from "./styles/pages/ForgetPassword";
+import ResetPassword from "./styles/pages/ResetPassword";
+import Footer from "./components/Footer";
 
 const App = () => {
   const [userToken, setUserToken] = useState(Cookies.get("userToken") || null);
@@ -33,7 +35,7 @@ const App = () => {
 
   const setUser = (token, id) => {
     if (token) {
-      Cookies.set("token", token, { expires: 7 });
+      Cookies.set("userToken", token, { expires: 7 });
       Cookies.set("userId", id, { expires: 7 });
       setUserToken(token);
     } else {
@@ -51,7 +53,7 @@ const App = () => {
           path="/"
           element={<Login setUser={setUser} userToken={userToken} />}
         />
-        <Route path="/signup" element={<Signup />} />
+        <Route path="/signup" setUser={setUser} element={<Signup />} />
         <Route
           path="/coups-de-coeur"
           element={
@@ -73,9 +75,11 @@ const App = () => {
           }
         />
         <Route path="/forget-password" element={<ForgotPassword />} />
+        <Route path="/reset-password/:token" element={<ResetPassword />} />
         {/* Not Found Route */}
         <Route path="*" element={<NotFound />} />
       </Routes>
+      {userToken && <Footer />}
     </Router>
   );
 };

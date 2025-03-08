@@ -66,7 +66,7 @@ const Card = ({ movie, setUser, userToken, userId, deleteStorage }) => {
     console.log("Attempting to add movie to favorites:", movie.id);
 
     const response = await axios.post(
-      `http://localhost:8000/api/users/${userId}/favorites`,
+      `https://site--movies-bank--574qbjcqcwyr.code.run/api/users/${userId}/favorites`,
       {
         movieId: movie.id.toString(),
       },

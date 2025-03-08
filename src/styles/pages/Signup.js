@@ -38,15 +38,16 @@ function Signup(props) {
     event.preventDefault();
     const fetchData = async () => {
       try {
-        const response = await axios.post("http://localhost:8000/user/signup", {
-          username: name,
-          email: email,
-          password: password,
-        });
-        if (response.data.token) {
-          const token = response.data.token;
-          setUser(token, response.data._id);
-          navigate("/login");
+        const response = await axios.post(
+          "https://site--movies-bank--574qbjcqcwyr.code.run/user/signup",
+          {
+            username: name,
+            email: email,
+            password: password,
+          }
+        );
+        if (response.data) {
+          navigate("/");
         }
       } catch (error) {
         alert("wrong details");

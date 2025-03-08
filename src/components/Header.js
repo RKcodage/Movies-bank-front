@@ -43,6 +43,18 @@ const Header = ({ setUser, userToken }) => {
           {/* LOGO */}
           <h1>Movies Bank</h1>
 
+          {!userToken && (
+            <h2
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              L'application des cinéphiles
+            </h2>
+          )}
+
           {/* CONNEXION */}
           {userToken ? (
             <ul className="login">

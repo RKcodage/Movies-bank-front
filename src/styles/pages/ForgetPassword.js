@@ -9,12 +9,18 @@ const ForgotPassword = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const response = await axios.post("/api/forgot-password", { email });
-      setMessage(response.data.message);
-    } catch (error) {
-      setMessage("Erreur lors de l'envoi de l'email de réinitialisation.");
-    }
+
+    const response = await fetch(
+      "https://site--movies-bank--574qbjcqcwyr.code.run/forget-password",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      }
+    );
+
+    const data = await response.json();
+    setMessage(data.message);
   };
 
   return (
@@ -32,7 +38,7 @@ const ForgotPassword = () => {
         </Link>
 
         <h1>Réinitialisation du mot de passe</h1>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} style={{ position: "relative" }}>
           <input
             type="email"
             placeholder="Votre Email"
@@ -43,10 +49,12 @@ const ForgotPassword = () => {
           <input
             type="submit"
             value="Envoyer l'email de réinitialisation"
-            style={{ width: "250px" }}
+            style={{ width: "180px", fontSize: "16px" }}
           />
+          {message && (
+            <p style={{ position: "absolute", top: "120px" }}>{message}</p>
+          )}
         </form>
-        {message && <p>{message}</p>}
       </div>
     </div>
   );

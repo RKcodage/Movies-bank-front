@@ -33,15 +33,18 @@ function Login(props) {
     // Fetch data from back-end
     const fetchData = async () => {
       try {
-        const response = await axios.post("http://localhost:8000/user/login", {
-          email,
-          password,
-        });
+        const response = await axios.post(
+          "https://site--movies-bank--574qbjcqcwyr.code.run/user/login",
+          {
+            email,
+            password,
+          }
+        );
         if (response.data.token) {
           const token = response.data.token;
           setUser(token, response.data._id);
 
-          navigate("/account"); // user can enter - redirect to user page
+          navigate("/home"); // user can enter - redirect to user page
         }
       } catch (error) {
         alert("wrong details");

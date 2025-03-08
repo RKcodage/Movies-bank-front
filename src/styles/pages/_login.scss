@@ -94,6 +94,12 @@
     font-size: 20px;
     background: rgb(0 10 22 / 50%);
     color: white;
+
+    &:hover {
+      
+      box-shadow: 0 0 10px #ffffffd2;
+      
+    }
   }
 
   
