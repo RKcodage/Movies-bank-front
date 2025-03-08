@@ -39,8 +39,8 @@ const App = () => {
       Cookies.set("userId", id, { expires: 7 });
       setUserToken(token);
     } else {
-      Cookies.remove("token");
-      Cookies.remove("id");
+      Cookies.remove("userToken");
+      Cookies.remove("userId");
       setUserToken(null);
     }
   };

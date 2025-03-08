@@ -10,12 +10,9 @@ function Account({ userId }) {
     },
   });
 
-  // État temporaire pour le formulaire
   const [formData, setFormData] = useState({
     email: "",
-    account: {
-      username: "",
-    },
+    username: "",
   });
 
   // Récupérer les informations de l'utilisateur
@@ -25,16 +22,14 @@ function Account({ userId }) {
         const res = await axios.get(
           `https://site--movies-bank--574qbjcqcwyr.code.run/user/${userId}`
         );
-        // console.log(res.data); // Debug
-
-        // Met à jour l'état avec l'email et le username
+        // Met à jour l'état user avec les données de l'API
         setUser({
           email: res.data.email,
           account: {
             username: res.data.account.username,
           },
         });
-        // Initialise formData avec les valeurs actuelles
+        // Initialise formData avec les valeurs de user
         setFormData({
           email: res.data.email,
           username: res.data.account.username,
@@ -63,6 +58,11 @@ function Account({ userId }) {
       );
       // Met à jour l'état user avec les nouvelles données
       setUser(updatedUser);
+      // Met à jour formData avec les nouvelles données
+      setFormData({
+        email: updatedUser.email,
+        username: updatedUser.account.username,
+      });
       alert("Informations mises à jour avec succès !");
     } catch (error) {
       console.error("Erreur lors de la mise à jour", error);
