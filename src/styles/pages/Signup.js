@@ -2,9 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 
-function Signup(props) {
-  const { setUser } = props;
-
+function Signup() {
   // Navigate : redirect user to a page if submit is ok
   const navigate = useNavigate();
 

@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext } from "react";
+import React, { createContext, useState } from "react";
 
 // Création du contexte
 export const PasswordRecoveryContext = createContext(null);

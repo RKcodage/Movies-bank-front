@@ -26,7 +26,7 @@ import Footer from "./components/Footer";
 
 const App = () => {
   const [userToken, setUserToken] = useState(Cookies.get("userToken") || null);
-  const [userId, setUserId] = useState(Cookies.get("userId") || null);
+  const [userId] = useState(Cookies.get("userId") || null);
 
   // Protect access to unauthorized users
   const PrivateRoute = ({ children }) => {
