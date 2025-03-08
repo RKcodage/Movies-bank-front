@@ -74,6 +74,7 @@ const Form = ({ setUser, userToken, userId }) => {
             } else if (sortGoodBad === "badToGood") {
               return a.vote_average - b.vote_average;
             }
+            return 0;
           })
           .map((movie) => (
             <Card
