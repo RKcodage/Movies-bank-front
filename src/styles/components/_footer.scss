@@ -1,9 +1,8 @@
 .footer {
-  border-top: solid 1px grey;
   color: white;
   padding: 20px 0;
   text-align: center;
-  margin-top: 50px;
+  margin-top: auto;
 }
 
 .container {
@@ -11,6 +10,8 @@
   flex-direction: column;
   align-items: center;
   gap: 10px;
+  padding-top: 15px;
+  border-top: solid 1px grey;
 }
 
 .logo {

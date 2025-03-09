@@ -23,12 +23,18 @@ $white: rgb(238, 238, 238);
   font-family: $font-1;
 }
 
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Assure une hauteur minimum */
+}
+
 body {
   // background: $color-2;
   background-image: url(../assets/backllm3.webp), linear-gradient(183deg, #000b16 100%, #00132a 46%, #00060c 1%, #000 0%);
   background-repeat: no-repeat;
   background-size: 100vw;
-  min-height: 100vh;
+  height: 100%;
   width: 100%;
   color: $white;
 }
@@ -39,6 +45,7 @@ li {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin-bottom: 20px;
 }
 @media (max-width: 768px) {
   .result {

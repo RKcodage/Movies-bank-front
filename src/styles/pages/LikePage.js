@@ -5,29 +5,18 @@ import Card from "../../components/Card";
 const LikePage = ({ setUser, userToken, userId }) => {
   const [listData, setListData] = useState([]);
 
-  // useEffect(() => {
-  //   let moviesId = window.localStorage.movies
-  //     ? window.localStorage.movies.split(",")
-  //     : [];
-
-  //   for (let i = 0; i < moviesId.length; i++) {
-  //     axios
-  //       .get(
-  //         `https://api.themoviedb.org/3/movie/${moviesId[i]}?api_key=ed82f4c18f2964e75117c2dc65e2161d&language=fr-FR`
-  //       )
-  //       .then((res) => setListData((listData) => [...listData, res.data]));
-  //   }
-  // }, []);
-
   const deleteStorage = async (movieId) => {
     setListData((prevData) => prevData.filter((movie) => movie.id !== movieId));
     axios
-      .delete(`http://localhost:8000/api/users/${userId}/favorites`, {
-        data: { movieId },
-        headers: {
-          Authorization: `Bearer ${userToken}`,
-        },
-      })
+      .delete(
+        `https://site--movies-bank--574qbjcqcwyr.code.run/api/users/${userId}/favorites`,
+        {
+          data: { movieId },
+          headers: {
+            Authorization: `Bearer ${userToken}`,
+          },
+        }
+      )
       .then(() => {
         console.log("Film supprimé des favoris !");
       })
@@ -63,7 +52,7 @@ const LikePage = ({ setUser, userToken, userId }) => {
 
   return (
     <div className="user-list-page">
-      <h2>
+      <h2 style={{ marginTop: "40px" }}>
         Vos coups de coeur <span>❤️‍🔥</span>
       </h2>
       <div className="result">
@@ -79,7 +68,7 @@ const LikePage = ({ setUser, userToken, userId }) => {
             />
           ))
         ) : (
-          <h2>
+          <h2 style={{ marginTop: "150px" }}>
             Aucun coups de coeur <span>😢</span>
           </h2>
         )}
