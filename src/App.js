@@ -33,6 +33,10 @@ const App = () => {
     return userToken ? children : <Navigate to="/" />;
   };
 
+  const PublicRoute = ({ children }) => {
+    return !userToken ? children : <Navigate to="/home" />;
+  };
+
   const setUser = (token, id) => {
     if (token) {
       Cookies.set("userToken", token, { expires: 7 });
@@ -53,19 +57,43 @@ const App = () => {
       <Routes>
         <Route
           path="/"
-          element={<Login setUser={setUser} userToken={userToken} />}
+          element={
+            <PublicRoute>
+              <Login setUser={setUser} userToken={userToken} />
+            </PublicRoute>
+          }
         />
-        <Route path="/signup" setUser={setUser} element={<Signup />} />
+        <Route
+          path="/signup"
+          setUser={setUser}
+          element={
+            <PublicRoute>
+              <Signup />
+            </PublicRoute>
+          }
+        />
         <Route
           path="/coups-de-coeur"
           element={
-            <LikePage userId={userId} setUser={setUser} userToken={userToken} />
+            <PrivateRoute>
+              <LikePage
+                userId={userId}
+                setUser={setUser}
+                userToken={userToken}
+              />
+            </PrivateRoute>
           }
         />
         <Route
           path="/account"
           element={
-            <Account userId={userId} setUser={setUser} userToken={userToken} />
+            <PrivateRoute>
+              <Account
+                userId={userId}
+                setUser={setUser}
+                userToken={userToken}
+              />
+            </PrivateRoute>
           }
         />
         <Route

@@ -76,16 +76,14 @@
 }
 
 .to-favorites {
-  margin-top: 20px;
+  margin: 20px 0;
   width: 600px;
   height: 150px;
   background-size: cover;
   background-position: center;
   border-radius: 15px;
-  position: relative; /* Nécessaire pour le pseudo-élément */
+  position: relative; 
   overflow: hidden;
-
-  /* On retire le filter: blur(2px) ici */
 }
 
 .to-favorites::before {

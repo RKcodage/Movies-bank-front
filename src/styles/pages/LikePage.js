@@ -69,7 +69,7 @@ const LikePage = ({ setUser, userToken, userId }) => {
           ))
         ) : (
           <h2 style={{ marginTop: "150px" }}>
-            Aucun coups de coeur <span>😢</span>
+            Vous n'avez aucun coups de coeur <span>😢</span>
           </h2>
         )}
       </div>
