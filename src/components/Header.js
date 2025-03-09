@@ -49,9 +49,10 @@ const Header = ({ setUser, userToken }) => {
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
+                fontSize: "30px",
               }}
             >
-              L'application des cinéphiles
+              L'Application des cinéphiles
             </h2>
           )}
 
