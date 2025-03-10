@@ -4,32 +4,21 @@ import Card from "./Card";
 
 const Form = ({ setUser, userToken, userId }) => {
   const [moviesData, setMoviesData] = useState([]);
-  const [search, setSearch] = useState("code");
+  const [search, setSearch] = useState("");
   const [sortGoodBad, setSortGoodBad] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
 
-  // useEffect(() => {
-  //   axios
-  //     .get(
-  //       `https://api.themoviedb.org/3/search/movie?api_key=7948061103b4d47261ea505266015c44&query=${search}&language=fr-FR&page=${currentPage}`
-  //     )
-  //     .then((res) => {
-  //       setMoviesData(res.data.results);
-  //       setTotalPages(res.data.total_pages);
-  //     });
-  // }, [search, currentPage]);
-
   useEffect(() => {
-    const query = search.trim() === "" ? "code" : search; // "code" comme recherche par défaut
-    axios
-      .get(
-        `https://api.themoviedb.org/3/search/movie?api_key=7948061103b4d47261ea505266015c44&query=${query}&language=fr-FR&page=${currentPage}`
-      )
-      .then((res) => {
-        setMoviesData(res.data.results);
-        setTotalPages(res.data.total_pages); // Mettre à jour la pagination
-      });
+    const endpoint =
+      search.trim() === ""
+        ? `https://api.themoviedb.org/3/discover/movie?api_key=7948061103b4d47261ea505266015c44&language=fr-FR&sort_by=popularity.desc&page=${currentPage}`
+        : `https://api.themoviedb.org/3/search/movie?api_key=7948061103b4d47261ea505266015c44&query=${search}&language=fr-FR&page=${currentPage}`;
+
+    axios.get(endpoint).then((res) => {
+      setMoviesData(res.data.results);
+      setTotalPages(res.data.total_pages);
+    });
   }, [search, currentPage]);
 
   return (
