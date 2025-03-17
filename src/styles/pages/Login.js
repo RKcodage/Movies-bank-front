@@ -44,26 +44,12 @@ function Login(props) {
           const token = response.data.token;
           setUser(token, response.data._id);
 
-          navigate("/home"); // user can enter - redirect to user page
+          navigate("/home");
         }
       } catch (error) {
         alert("wrong details");
         console.log(error);
       }
-      //     .then((res) => {
-      //       if (res.data === "exist") {
-      //         history("*", { state: { id: email } });
-      //       } else if (res.data === "notexist") {
-      //         alert("User has not sign up");
-      //       }
-      //     })
-      //     .catch((e) => {
-      //       alert("wrong details");
-      //       console.log(e);
-      //     });
-      // } catch (e) {
-      //   console.log(e);
-      // };
     };
     fetchData();
   };
