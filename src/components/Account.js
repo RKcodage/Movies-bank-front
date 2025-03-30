@@ -106,14 +106,26 @@ function Account({ userId }) {
         </form>
       </div>
 
-      <div
-        className="to-favorites"
-        style={{
-          backgroundImage: "url('/img/movies-background.jpg')",
-        }}
-      >
-        <div className="to-favorites-content">
-          <Link to="/coups-de-coeur">Voir mes favoris</Link>
+      <div className="links">
+        <div
+          className="to-favorites"
+          style={{
+            backgroundImage: "url('/img/movies-background.jpg')",
+          }}
+        >
+          <div className="to-favorites-content">
+            <Link to="/coups-de-coeur">Voir mes favoris</Link>
+          </div>
+        </div>
+        <div
+          className="to-wishlist"
+          style={{
+            backgroundImage: "url('/img/wishlist.jpg')",
+          }}
+        >
+          <div className="to-favorites-content">
+            <Link to="/wishlist">Voir ma wishlist</Link>
+          </div>
         </div>
       </div>
     </div>

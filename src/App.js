@@ -7,6 +7,7 @@ import Login from "./styles/pages/Login";
 import Signup from "./styles/pages/Signup";
 import LikePage from "./styles/pages/LikePage";
 import NotFound from "./styles/pages/NotFound";
+import Wishlist from "./styles/pages/Wishlist";
 
 // Import Packages
 import {
@@ -77,6 +78,18 @@ const App = () => {
           element={
             <PrivateRoute>
               <LikePage
+                userId={userId}
+                setUser={setUser}
+                userToken={userToken}
+              />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/wishlist"
+          element={
+            <PrivateRoute>
+              <Wishlist
                 userId={userId}
                 setUser={setUser}
                 userToken={userToken}

@@ -84,34 +84,67 @@
       display: none;
     }
   }
-  .btn {
-    background: rgb(8, 50, 84);
+
+  .btn-group {
+    display: flex;
     position: absolute;
     bottom: 16px;
     left: 50%;
     transform: translateX(-50%);
-    padding: 14px 0;
     margin: 0 auto;
-    width: 150px;
-    text-align: center;
-    border-radius: 15px;
-    cursor: pointer;
-    transition: 0.2s;
-    box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+    gap: 5px;
 
-    &:hover {
-      background: #212040;
-      box-shadow: 0 0 10px #ffffffd2;
-      font-size: 1.025rem;
+    .btn {
+      background: rgb(8, 50, 84);
+      // position: absolute;
+      // bottom: 16px;
+      // left: 50%;
+      // transform: translateX(-50%);
+      padding: 14px 0;
+      margin: 0 auto;
+      width: 130px;
+      text-align: center;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: 0.2s;
+      box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+  
+      &:hover {
+        background: #212040;
+        box-shadow: 0 0 10px #ffffffd2;
+        font-size: 1.025rem;
+      }
+    }
+    .btn-wishlist {
+      background: rgb(8, 50, 84);
+      // position: absolute;
+      // bottom: 16px;
+      // left: 50%;
+      // transform: translateX(-50%);
+      padding: 14px 0;
+      margin: 0 auto;
+      width: 130px;
+      text-align: center;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: 0.2s;
+      box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+  
+      &:hover {
+        background: #212040;
+        box-shadow: 0 0 10px #ffffffd2;
+        font-size: 1.025rem;
+      }
     }
   }
+  
 }
 
 @media (max-width: 768px) 
 {
   .card {
     flex: 1 0 25%;
-    max-width: 380px;
+    width: 400px;
     height: 800px;
     background: rgba(255, 255, 255, 0.05);
     border-radius: 35px;
@@ -121,7 +154,7 @@
     overflow: hidden;
 
     img {
-      width: 50%;
+      width: 80%;
       height: 254px;
       // object-fit: cover;
       // object-position: top;
@@ -146,10 +179,6 @@
     }
     .btn {
       background: rgb(8, 50, 84);
-      position: absolute;
-      bottom: 16px;
-      left: 50%;
-      transform: translateX(-50%);
       padding: 14px 0;
       margin: 0 auto;
       width: 150px;
@@ -166,4 +195,5 @@
       }
     }
   }
+  
 }

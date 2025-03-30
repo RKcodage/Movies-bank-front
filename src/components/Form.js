@@ -83,9 +83,7 @@ const Form = ({ setUser, userToken, userId }) => {
         >
           Précédent
         </button>
-        <span>
-          Page {currentPage} sur {totalPages}
-        </span>
+        <span>Page {currentPage}</span>
         <button
           onClick={() =>
             setCurrentPage((prev) => Math.min(prev + 1, totalPages))

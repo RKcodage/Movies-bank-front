@@ -1,48 +1,6 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React from "react";
 
-const Card = ({ movie, setUser, userToken, userId, deleteStorage }) => {
-  const [isAdded, setIsAdded] = useState(false);
-  const [isWishlistAdded, setIsWishlistAdded] = useState(false);
-
-  const addStorage = async () => {
-    console.log("Attempting to add movie to favorites:", movie.id);
-
-    const response = await axios.post(
-      `https://site--movies-bank--574qbjcqcwyr.code.run/api/users/${userId}/favorites`,
-      {
-        movieId: movie.id.toString(),
-      },
-      {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${userToken}`, // Si nécessaire
-        },
-      }
-    );
-
-    console.log("Response from backend:", response.data);
-    setIsAdded(true);
-  };
-
-  const addToWishlist = async () => {
-    const response = await axios.post(
-      `https://site--movies-bank--574qbjcqcwyr.code.run/api/users/${userId}/wishlist`,
-      {
-        movieId: movie.id.toString(),
-      },
-      {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${userToken}`, // Si nécessaire
-        },
-      }
-    );
-
-    console.log("Response from backend:", response.data);
-    setIsWishlistAdded(true);
-  };
-
+const WishlistCard = ({ movie, deleteMovieFromWishlist }) => {
   // To format the date
   const dateFormater = (date) => {
     let [yy, mm, dd] = date.split("-");
@@ -149,28 +107,18 @@ const Card = ({ movie, setUser, userToken, userId, deleteStorage }) => {
         <p>Aucune description disponible</p>
       )}
       <p>{movie.overview}</p>
-      {movie.genre_ids ? (
-        <div className="btn-group">
-          <div className="btn" onClick={addStorage}>
-            {userToken && isAdded ? "❤️‍🔥" : "J'aime"}
-          </div>
-          <div className="btn-wishlist" onClick={addToWishlist}>
-            {userToken && isWishlistAdded ? "Ajouté" : "À regarder"}
-          </div>
+
+      <div className="btn-group">
+        <div
+          className="btn-wishlist"
+          id={movie.id}
+          onClick={() => deleteMovieFromWishlist(movie.id)}
+        >
+          Supprimer de la liste
         </div>
-      ) : (
-        <div className="btn-group">
-          <div
-            className="btn"
-            id={movie.id}
-            onClick={() => deleteStorage(movie.id)}
-          >
-            Supprimer de la liste
-          </div>
-        </div>
-      )}
+      </div>
     </div>
   );
 };
 
-export default Card;
+export default WishlistCard;

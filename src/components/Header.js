@@ -30,6 +30,9 @@ const Header = ({ setUser, userToken }) => {
                 <li>
                   <NavLink to="/coups-de-coeur">Coups de coeur</NavLink>
                 </li>
+                <li>
+                  <NavLink to="/wishlist">Ma wishlist</NavLink>
+                </li>
               </ul>
             ) : (
               <ul>
@@ -97,6 +100,9 @@ const Header = ({ setUser, userToken }) => {
                 </li>
                 <li>
                   <NavLink to="/coups-de-coeur">Coups de coeur</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/wishlist">Ma wishlist</NavLink>
                 </li>
                 <li>
                   <NavLink to="/account">Mon compte</NavLink>
